@@ -1,0 +1,341 @@
+body {
+    display: flex;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    padding-top: 56px; /* Bootstrap 的导航栏高度 */
+}
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20%;
+    /* height: 100vh; */
+    height: calc(100vh - 56px); /* 减去导航栏的高度 */
+    background-color: #f8f9fa;
+    border-right: 1px solid #dee2e6;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#conversations {
+    /* background-image: url('/transapi0705/5.jpg'); */
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+#add-conversation {
+    padding: 10px;
+    background-color: #d32f2f;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s;
+    color: #fff;
+}
+
+#add-conversation:hover {
+    background-color: #b0b0b0;
+}
+
+#content {
+    width: 80%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    /* height: 100vh; */
+    height: calc(100vh - 56px); /* 减去导航栏的高度 */
+}
+
+#question-form {
+    display: flex;
+    margin: 0;
+    padding-top: 10px;
+}
+
+.conversation {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #fff;
+    cursor: pointer;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s;
+}
+
+.conversation:hover {
+    background-color: #e9ecef;
+}
+
+.conversation.active {
+    background-color: #b0b0b0;
+}
+
+#messages {
+    background-image: url('/transapi0705/6.jpg') ;
+    /* background-image: url('/transapi0705/8.jpg'); */
+    overflow-y: auto;
+    border: 1px solid #dee2e6;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 0.25rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.message-container {
+    display: flex;
+    align-items: center;
+}
+
+.message {
+    display: inline-block;
+    max-width: 80%;
+    margin: 10px 0;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    word-wrap: break-word;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to right, #f8f9fa, #e9ecef);
+}
+
+.user-message-container {
+    justify-content: flex-end;
+}
+
+.api-message-container, .k-message-container {
+    justify-content: flex-start;
+}
+
+.user-message {
+    border: 1px;
+    color: blue;
+    background: linear-gradient(to right, #d32f2f, #965454);
+    color: white;
+}
+
+.api-message {
+    border: 1px;
+    color: green;
+    background: linear-gradient(to right, #e9ecef, #dee2e6);
+    color: black;
+}
+
+.k-message {
+    border: 1px;
+    color: green;
+    background: linear-gradient(to right, #e9ecef, #dee2e6);
+    color: black;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+.user-message-container .avatar {
+    background-color: #965454;
+    color: white;
+    order: 2; /* 将头像放在右边 */
+}
+
+.nav-item {
+    margin-right: 10px; /* 调整这个值以改变两个li之间的距离 */
+}
+
+.api-message-container .avatar, .k-message-container .avatar {
+    background-color: #28a745;
+    color: white;
+}
+
+.k-message-container .avatar {
+    background-color: #ffc107;
+    color: black;
+}
+
+#question-form textarea {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    resize: none; /* 禁止手动调整大小 */
+    max-height: 150px; /* 设置最大高度 */
+    overflow-y: auto; /* 当内容超过最大高度时，显示滚动条 */
+}
+
+#question-form button {
+    padding: 10px 20px;
+    border: 1px solid #dee2e6;
+    cursor: pointer;
+    background-color: #d32f2f;
+    color: white;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s;
+}
+
+#question-form button:hover {
+    background-color: #965454;
+}
+
+#loader {
+    display: none;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #d32f2f;
+    width: 40px;
+    height: 40px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    margin: 10px auto;
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.modal-body .table {
+    width: 100%;
+}
+
+.modal-body th, .modal-body td {
+    padding: 15px;
+    text-align: left;
+}
+
+.modal-body th {
+    min-width: 300px; /* 适当调整列的最小宽度 */
+}
+
+.dropup .dropdown-menu {
+    top: auto;
+    bottom: 100%;
+    margin-bottom: .125rem;
+}
+
+
+/* 简单的CSS样式来设置弹窗 */
+.tc {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.tc-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.message-container {
+    display: flex;
+    align-items: center;
+    position: relative; /* 添加此行以使按钮相对于容器定位 */
+}
+
+.message {
+    display: inline-block;
+    max-width: 80%;
+    margin: 10px 0;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    word-wrap: break-word;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    position: relative; /* 添加此行以使按钮相对于块定位 */
+}
+
+.expand-btn, .collapse-btn {
+    position: absolute;
+    right: 15%; /* 根据需要调整位置 */
+    bottom: -23px; /* 根据需要调整位置 */
+    border: 1px solid #ccc; /* 添加边框 */
+    background: #f0f0f0; /* 添加背景颜色 */
+    cursor: pointer;
+    font-size: 25px;
+    padding: 3px 8px 3px 4.6px; /* 添加内边距 */
+    line-height: 1;
+    border-radius: 5px; /* 矩形按钮 */
+    transition: background-color 0.3s, transform 0.2s; /* 添加过渡效果 */
+}
+
+.expand-btn:hover, .collapse-btn:hover {
+    background-color: #e0e0e0; /* 悬浮时的背景颜色 */
+}
+
+.expand-btn:active, .collapse-btn:active {
+    background-color: #d0d0d0e5; /* 点击时的背景颜色 */
+    transform: scale(0.95); /* 点击时的缩放效果 */
+}
+
+.expand-btn::before {
+    content: "«";
+    display: inline-block;
+    transform: rotate(-90deg);
+}
+
+.collapse-btn::before {
+    content: "»";
+    display: inline-block;
+    transform: rotate(-90deg);
+}
+
+#file-select-button::after {
+    display: inline-block;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+    transition: transform 0.2s; /* 添加过渡效果 */
+}
+
+#file-select-button.expanded::after {
+    transform: rotate(180deg); /* 旋转箭头方向 */
+}
+
